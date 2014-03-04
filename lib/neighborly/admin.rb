@@ -1,4 +1,5 @@
-require "neighborly/admin/version"
+require 'neighborly/admin/engine'
+require 'neighborly/admin/version'
 
 module Neighborly
   module Admin
