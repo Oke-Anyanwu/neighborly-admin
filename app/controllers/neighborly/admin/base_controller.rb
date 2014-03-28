@@ -3,7 +3,7 @@ module Neighborly::Admin
     AdminPolicy
   end
 
-  class ApplicationController < ::ApplicationController
+  class BaseController < ::ApplicationController
     inherit_resources
 
     before_filter do

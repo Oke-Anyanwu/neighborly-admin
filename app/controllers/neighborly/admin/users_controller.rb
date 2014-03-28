@@ -1,5 +1,5 @@
 module Neighborly::Admin
-  class UsersController < ApplicationController
+  class UsersController < BaseController
     inherit_resources
     before_filter :set_title
     before_filter :set_totals

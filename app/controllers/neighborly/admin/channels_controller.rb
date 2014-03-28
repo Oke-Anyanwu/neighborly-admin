@@ -1,5 +1,5 @@
 module Neighborly::Admin
-  class ChannelsController < ApplicationController
+  class ChannelsController < BaseController
     defaults finder: :find_by_permalink
     actions :all, except: [:show]
 
@@ -8,7 +8,7 @@ module Neighborly::Admin
         define_method action do
           resource.send(action)
           flash.notice = I18n.t("admin.channels.messages.successful.#{action}")
-          redirect_to admin_channels_path(params[:local_params])
+          redirect_to channels_path(params[:local_params])
         end
       end
     end

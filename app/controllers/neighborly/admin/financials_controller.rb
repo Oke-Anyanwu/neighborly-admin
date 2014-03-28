@@ -1,5 +1,5 @@
 module Neighborly::Admin
-  class FinancialsController < ApplicationController
+  class FinancialsController < BaseController
     inherit_resources
     defaults  resource_class: Project, collection_name: 'projects', instance_name: 'project'
 

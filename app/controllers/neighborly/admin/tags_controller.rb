@@ -1,5 +1,5 @@
 module Neighborly::Admin
-  class TagsController < ApplicationController
+  class TagsController < BaseController
     actions :all, except: [:show]
 
     def collection

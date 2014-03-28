@@ -1,5 +1,5 @@
 module Neighborly::Admin
-  class Channels::MembersController < ApplicationController
+  class Channels::MembersController < BaseController
     actions :index
     helper_method :parent
 
@@ -22,12 +22,12 @@ module Neighborly::Admin
         end
       end
 
-      redirect_to admin_channel_members_path(parent)
+      redirect_to channel_members_path(parent)
     end
 
     def destroy
       parent.channel_members.where(user_id: resource.id).first.delete rescue false
-      redirect_to admin_channel_members_path(parent), flash: { success: t('admin.channels.members.messages.removed') }
+      redirect_to channel_members_path(parent), flash: { success: t('admin.channels.members.messages.removed') }
     end
 
     protected

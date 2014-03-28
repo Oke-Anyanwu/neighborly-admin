@@ -29,7 +29,7 @@ module Neighborly::Admin
       if @user.valid? and @contribution.valid?
         @user.save!
         @contribution.save!
-        redirect_to populate_contribution_admin_project_path(resource), flash: { success: 'Success!' }
+        redirect_to populate_contribution_project_path(resource), flash: { success: 'Success!' }
       else
         flash.alert = (@user.errors.full_messages +
                        @contribution.errors.full_messages).to_sentence
@@ -39,7 +39,7 @@ module Neighborly::Admin
 
     def destroy
       resource.push_to_trash! if resource.can_push_to_trash?
-      redirect_to admin_projects_path
+      redirect_to projects_path
     end
 
     protected

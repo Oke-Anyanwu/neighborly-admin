@@ -1,5 +1,5 @@
 module Neighborly::Admin
-  class PressAssetsController < ApplicationController
+  class PressAssetsController < BaseController
     actions :all, except: [:show]
 
     def collection
