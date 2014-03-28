@@ -1,4 +1,4 @@
-class Admin::Channels::MembersController < Admin::BaseController
+class Admin::Channels::MembersController < Admin::ApplicationController
   actions :index
   helper_method :parent
 

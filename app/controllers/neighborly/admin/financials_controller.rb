@@ -1,4 +1,4 @@
-class Admin::FinancialsController < Admin::BaseController
+class Admin::FinancialsController < Admin::ApplicationController
   inherit_resources
   defaults  resource_class: Project, collection_name: 'projects', instance_name: 'project'
 

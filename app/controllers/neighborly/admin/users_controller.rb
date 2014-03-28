@@ -1,4 +1,4 @@
-class Admin::UsersController < Admin::BaseController
+class Admin::UsersController < Admin::ApplicationController
   inherit_resources
   before_filter :set_title
   before_filter :set_totals

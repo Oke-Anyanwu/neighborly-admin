@@ -1,4 +1,4 @@
-class Admin::PressAssetsController < Admin::BaseController
+class Admin::PressAssetsController < Admin::ApplicationController
   actions :all, except: [:show]
 
   def collection

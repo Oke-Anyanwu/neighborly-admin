@@ -1,4 +1,4 @@
-class Admin::TagsController < Admin::BaseController
+class Admin::TagsController < Admin::ApplicationController
   actions :all, except: [:show]
 
   def collection

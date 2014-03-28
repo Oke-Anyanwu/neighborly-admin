@@ -1,2 +1,2 @@
-class Admin::Reports::FundingRaisedPerProjectReportsController < Admin::Reports::BaseController
+class Admin::Reports::FundingRaisedPerProjectReportsController < Admin::Reports::ApplicationController
 end

@@ -1,3 +1,3 @@
-class Admin::Reports::StatisticsController < Admin::Reports::BaseController
+class Admin::Reports::StatisticsController < Admin::Reports::ApplicationController
   defaults resource_class: Statistics
 end

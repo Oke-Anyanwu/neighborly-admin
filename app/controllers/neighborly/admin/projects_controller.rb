@@ -1,4 +1,4 @@
-class Admin::ProjectsController < Admin::BaseController
+class Admin::ProjectsController < Admin::ApplicationController
   defaults finder: :find_by_permalink!
 
   has_scope :by_user_email, :by_id, :pg_search, :user_name_contains, :with_state, :by_category_id, :order_by

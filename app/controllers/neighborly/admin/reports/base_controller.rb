@@ -1,4 +1,4 @@
-class Admin::Reports::BaseController < Admin::BaseController
+class Admin::Reports::ApplicationController < Admin::ApplicationController
   inherit_resources
   responders :csv
   respond_to :csv

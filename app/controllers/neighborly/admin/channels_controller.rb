@@ -1,4 +1,4 @@
-class Admin::ChannelsController < Admin::BaseController
+class Admin::ChannelsController < Admin::ApplicationController
   defaults finder: :find_by_permalink
   actions :all, except: [:show]
 

@@ -1,4 +1,4 @@
-class Admin::Companies::ContactsController < Admin::BaseController
+class Admin::Companies::ContactsController < Admin::ApplicationController
   defaults class_name: 'CompanyContact'
   actions :index, :show
 
