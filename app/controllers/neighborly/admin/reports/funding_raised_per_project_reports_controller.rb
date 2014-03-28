@@ -1,2 +1,4 @@
-class Admin::Reports::FundingRaisedPerProjectReportsController < Admin::Reports::ApplicationController
+module Neighborly::Admin
+  class Reports::FundingRaisedPerProjectReportsController < Reports::BaseController
+  end
 end

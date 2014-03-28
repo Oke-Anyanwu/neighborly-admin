@@ -1,7 +1,9 @@
-class Admin::PressAssetsController < Admin::ApplicationController
-  actions :all, except: [:show]
+module Neighborly::Admin
+  class PressAssetsController < ApplicationController
+    actions :all, except: [:show]
 
-  def collection
-    @press_assets ||= apply_scopes(end_of_association_chain).page(params[:page])
+    def collection
+      @press_assets ||= apply_scopes(end_of_association_chain).page(params[:page])
+    end
   end
 end

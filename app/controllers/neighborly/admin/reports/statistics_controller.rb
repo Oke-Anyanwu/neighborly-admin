@@ -1,3 +1,5 @@
-class Admin::Reports::StatisticsController < Admin::Reports::ApplicationController
-  defaults resource_class: Statistics
+module Neighborly::Admin
+  class Reports::StatisticsController < Reports::BaseController
+    defaults resource_class: Statistics
+  end
 end
