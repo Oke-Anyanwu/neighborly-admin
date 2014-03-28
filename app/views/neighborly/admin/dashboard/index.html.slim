@@ -3,7 +3,7 @@
 - @statistics = collection.first
 .admin
   .row
-    = render 'layouts/admin/menu'
+    = render 'neighborly/admin/layouts/menu'
     section.content.large-12.columns
       .text-right
         = link_to t('.download_funding_raised_per_project_report'), admin_reports_funding_raised_per_project_reports_path(format: :csv), class: 'button small secondary'
