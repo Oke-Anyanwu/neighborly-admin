@@ -102,8 +102,8 @@
                 td title=contribution.user.display_name
                   = link_to user_path(contribution.user) do
                     = contribution.user.display_image_html width: 50, height: 50
-                  .user_id= best_in_place [:admin, contribution], :user_id, method: :put, type: :input
-                td= best_in_place [:admin, contribution], :value, method: :put, type: :input
+                  .user_id= best_in_place contribution, :user_id, method: :put, type: :input
+                td= best_in_place contribution, :value, method: :put, type: :input
                 td title=("#{contribution.reward.display_minimum} - #{contribution.reward.description}" if contribution.reward)
                   - if contribution.reward
                     = contribution.reward.display_minimum
@@ -118,7 +118,7 @@
                       li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_contribution_path(contribution, reward_id: reward.id, local_params: params), method: :put
 
                 td.key= contribution.key
-                td.checkbox= best_in_place [:admin, contribution], :anonymous, method: :put, type: :checkbox, collection: [t('words._no'), t('words._yes')]
+                td.checkbox= best_in_place contribution, :anonymous, method: :put, type: :checkbox, collection: [t('words._no'), t('words._yes')]
                 td= (contribution.credits ? t('words._yes') : t('words._no'))
                 td= contribution.state
                 td
