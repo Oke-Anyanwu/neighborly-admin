@@ -5,7 +5,7 @@
     section.content.large-12.columns
       h3 = "Pre populate contributions on #{resource.name}"
 
-      = form_tag populate_admin_project_path, :multipart => true do
+      = form_tag populate_project_path, :multipart => true do
         fieldset.first
           legend
             | Create a new guest user

@@ -8,7 +8,7 @@
         = t('.total_projects')
 
       .filters
-        = form_tag admin_projects_path, method: :get, class: 'form-horizontal' do |f|
+        = form_tag projects_path, method: :get, class: 'form-horizontal' do |f|
           = hidden_field_tag :order_by, params[:order_by]
           .row
             .large-3.columns
@@ -120,29 +120,29 @@
                       i.icon-et-down-dir
                     ul[id="dropdown-#{project.id}" data-dropdown-content class="f-dropdown"]
                       li
-                        = link_to populate_contribution_admin_project_path(project) do
+                        = link_to populate_contribution_project_path(project) do
                           = t('.populate_contribution')
                       - if project.can_push_to_trash?
                         li
-                          = link_to admin_project_path(project), method: :delete, data: {confirm: t('admin.confirm_dialog')} do
+                          = link_to project_path(project), method: :delete, data: {confirm: t('admin.confirm_dialog')} do
                             = t('.send_to_trash')
                       - if project.can_approve?
                         li
-                          = link_to approve_admin_project_path(project), method: :put do
+                          = link_to approve_project_path(project), method: :put do
                             = t('.approve')
 
                       - if project.can_reject?
                         li
-                          = link_to reject_admin_project_path(project), method: :put  do
+                          = link_to reject_project_path(project), method: :put  do
                             = t('.reject')
 
                       - if project.can_push_to_draft?
                         li
-                          = link_to  push_to_draft_admin_project_path(project), method: :put  do
+                          = link_to  push_to_draft_project_path(project), method: :put  do
                             = t('.send_to_draft')
                       - if project.can_push_to_soon?
                         li
-                          = link_to  push_to_soon_admin_project_path(project), method: :put  do
+                          = link_to  push_to_soon_project_path(project), method: :put  do
                             = t('.send_to_soon')
         = paginate @projects
 

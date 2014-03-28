@@ -4,7 +4,7 @@
     = render 'neighborly/admin/layouts/menu'
     section.content.large-12.columns
       .filters
-        = form_tag admin_financials_path, method: :get, class: 'form-horizontal' do |f|
+        = form_tag financials_path, method: :get, class: 'form-horizontal' do |f|
           .large-4.columns
             = label_tag :by_permalink, t('.permalink')
             = text_field_tag :by_permalink, params[:by_permalink], class: 'input-small'
@@ -29,7 +29,7 @@
           .large-12.columns.text-right
             = submit_tag t('.submit'), class: 'button'
             | &nbsp;
-            = link_to t('.download_search_report'), admin_financials_path(params: params, format: :csv), class: 'button secondary'
+            = link_to t('.download_search_report'), financials_path(params: params, format: :csv), class: 'button secondary'
       .row
         .large-6.columns.text-left
           = paginate @projects
@@ -73,7 +73,7 @@
                   td
                     = project.display_expires_at
                   td
-                    = link_to t('.contribution_report'), admin_reports_contribution_reports_path(project_id: project.id, format: :csv)
+                    = link_to t('.contribution_report'), reports_contribution_reports_path(project_id: project.id, format: :csv)
                   td
                     - if project.online?
                       span.label.label-online= project.state

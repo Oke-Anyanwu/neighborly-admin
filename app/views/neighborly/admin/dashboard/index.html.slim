@@ -6,9 +6,9 @@
     = render 'neighborly/admin/layouts/menu'
     section.content.large-12.columns
       .text-right
-        = link_to t('.download_funding_raised_per_project_report'), admin_reports_funding_raised_per_project_reports_path(format: :csv), class: 'button small secondary'
+        = link_to t('.download_funding_raised_per_project_report'), reports_funding_raised_per_project_reports_path(format: :csv), class: 'button small secondary'
         | &nbsp;
-        = link_to t('.download_statistics_report'), admin_reports_statistics_path(format: :csv), class: 'button small secondary'
+        = link_to t('.download_statistics_report'), reports_statistics_path(format: :csv), class: 'button small secondary'
 
       .row.collapse
         .large-6.small-6.columns

@@ -1,4 +1,4 @@
-= simple_form_for  resource, url: (resource.persisted? ? admin_channel_path(resource) : admin_channels_path) do |form|
+= simple_form_for  resource, url: (resource.persisted? ? channel_path(resource) : channels_path) do |form|
   - resource.build_user unless resource.user.present?
 
   - unless resource.persisted?

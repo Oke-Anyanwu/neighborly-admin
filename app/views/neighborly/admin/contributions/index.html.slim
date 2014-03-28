@@ -4,7 +4,7 @@
     = render 'neighborly/admin/layouts/menu'
     section.content.large-12.columns
       .filters
-        = form_tag admin_contributions_path, method: :get, class: 'form-horizontal' do |f|
+        = form_tag contributions_path, method: :get, class: 'form-horizontal' do |f|
           .row
             .large-3.columns
               = label_tag :by_user_id, t('.user_id')
@@ -113,9 +113,9 @@
                   = link_to 'javascript:void(0);', class: 'button tiny secondary', data: {dropdown: "dropdown-reward-#{contribution.id}"} do
                     i.icon-et-down-dir
                   ul[id="dropdown-reward-#{contribution.id}" data-dropdown-content class="f-dropdown"]
-                    li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_admin_contribution_path(contribution, reward_id: nil), method: :put
+                    li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_contribution_path(contribution, reward_id: nil), method: :put
                     - contribution.available_rewards.each do |reward|
-                      li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_admin_contribution_path(contribution, reward_id: reward.id, local_params: params), method: :put
+                      li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_contribution_path(contribution, reward_id: reward.id, local_params: params), method: :put
 
                 td.key= contribution.key
                 td.checkbox= best_in_place [:admin, contribution], :anonymous, method: :put, type: :checkbox, collection: [t('words._no'), t('words._yes')]
@@ -126,13 +126,13 @@
                     i.icon-et-down-dir
                 ul[id="dropdown-#{contribution.id}" data-dropdown-content class="f-dropdown"]
                   - if contribution.confirmed?
-                    li= link_to t('admin.contributions.index.unconfirm_contribution'), pendent_admin_contribution_path(contribution, local_params: params), method: :put
+                    li= link_to t('admin.contributions.index.unconfirm_contribution'), pendent_contribution_path(contribution, local_params: params), method: :put
                   - else
-                    li= link_to t('admin.contributions.index.confirm_contribution'), confirm_admin_contribution_path(contribution, local_params: params), method: :put
+                    li= link_to t('admin.contributions.index.confirm_contribution'), confirm_contribution_path(contribution, local_params: params), method: :put
                   - if contribution.requested_refund? or contribution.confirmed?
-                    li= link_to t('admin.contributions.index.refund_contribution'), refund_admin_contribution_path(contribution, local_params: params), method: :put
-                  li= link_to t('admin.contributions.index.refund_and_hide'), hide_admin_contribution_path(contribution, local_params: params), method: :put
-                  li= link_to t('admin.contributions.index.cancel'), cancel_admin_contribution_path(contribution, local_params: params), method: :put
-                  li= link_to t('admin.contributions.index.push_to_trash'), push_to_trash_admin_contribution_path(contribution, local_params: params), method: :put
+                    li= link_to t('admin.contributions.index.refund_contribution'), refund_contribution_path(contribution, local_params: params), method: :put
+                  li= link_to t('admin.contributions.index.refund_and_hide'), hide_contribution_path(contribution, local_params: params), method: :put
+                  li= link_to t('admin.contributions.index.cancel'), cancel_contribution_path(contribution, local_params: params), method: :put
+                  li= link_to t('admin.contributions.index.push_to_trash'), push_to_trash_contribution_path(contribution, local_params: params), method: :put
       = paginate @contributions
 

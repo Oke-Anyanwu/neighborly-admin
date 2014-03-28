@@ -3,7 +3,7 @@
     = render 'neighborly/admin/layouts/menu'
     section.content.large-12.columns
       .text-right
-        = link_to t('.new'), new_admin_press_asset_path, class: 'button'
+        = link_to t('.new'), new_press_asset_path, class: 'button'
       .data-table
         = paginate @press_assets
         - if @press_assets.empty?
@@ -25,8 +25,8 @@
                   td = image_tag(press_asset.image.thumb.url, width: 100)
                   td
                     .pull-right
-                      = link_to t('.edit'), edit_admin_press_asset_path(press_asset), class: 'button tiny'
+                      = link_to t('.edit'), edit_press_asset_path(press_asset), class: 'button tiny'
                       | &nbsp;
-                      = link_to t('.destroy'), admin_press_asset_path(press_asset), method: :delete, confirm: t('words.confirm'), class: 'button tiny alert'
+                      = link_to t('.destroy'), press_asset_path(press_asset), method: :delete, confirm: t('words.confirm'), class: 'button tiny alert'
 
         = paginate @press_assets
