@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::ProjectsController do
+describe Neighborly::Admin::ProjectsController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }

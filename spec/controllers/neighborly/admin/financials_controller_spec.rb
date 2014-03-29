@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::FinancialsController do
+describe Neighborly::Admin::FinancialsController do
   let(:admin) { create(:user, admin: true) }
 
   before do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::TagsController do
+describe Neighborly::Admin::TagsController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }

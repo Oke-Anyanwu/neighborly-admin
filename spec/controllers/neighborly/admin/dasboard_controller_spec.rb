@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::DashboardController do
+describe Neighborly::Admin::DashboardController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   before do

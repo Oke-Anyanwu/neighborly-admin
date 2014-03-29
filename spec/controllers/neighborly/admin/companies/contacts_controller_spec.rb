@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::Companies::ContactsController do
+describe Neighborly::Admin::Companies::ContactsController do
   let(:current_user){ create(:user, admin: true) }
   let(:company_contact) { create(:company_contact) }
 

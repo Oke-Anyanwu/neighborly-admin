@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::PressAssetsController do
+describe Neighborly::Admin::PressAssetsController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }

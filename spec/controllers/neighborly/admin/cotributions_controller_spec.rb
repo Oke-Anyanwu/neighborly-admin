@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::ContributionsController do
+describe Neighborly::Admin::ContributionsController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:unconfirmed_contribution) { create(:contribution) }

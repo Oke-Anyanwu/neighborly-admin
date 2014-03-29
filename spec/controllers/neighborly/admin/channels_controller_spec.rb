@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::ChannelsController do
+describe Neighborly::Admin::ChannelsController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }
