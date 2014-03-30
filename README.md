@@ -21,6 +21,11 @@ Neighborly::Admin is a Rails Engine, integrating with your (Neighborly) Rails ap
 # config/routes.rb
 mount Neighborly::Admin::Engine => '/admin/', as: :neighborly_admin
 ```
+And load our JavaScript:
+
+```
+//= require neighborly-admin
+```
 
 ## Contributing
 
