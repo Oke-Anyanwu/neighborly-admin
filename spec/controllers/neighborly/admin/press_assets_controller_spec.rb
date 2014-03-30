@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::PressAssetsController do
+  routes { Neighborly::Admin::Engine.routes }
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }
@@ -15,7 +16,7 @@ describe Neighborly::Admin::PressAssetsController do
       before do
         get :index
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -33,7 +34,7 @@ describe Neighborly::Admin::PressAssetsController do
       before do
         get :edit, id: press_asset
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -56,7 +57,7 @@ describe Neighborly::Admin::PressAssetsController do
       before do
         put :update, id: press_asset
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -64,7 +65,7 @@ describe Neighborly::Admin::PressAssetsController do
         put :update, id: press_asset, press_asset: { title: 'updated title!' }
       end
 
-      it{ should redirect_to admin_press_assets_path }
+      it{ should redirect_to press_assets_path }
 
       it 'should update press_asset title' do
         expect(press_asset.reload.title).to eq 'updated title!'
@@ -78,7 +79,7 @@ describe Neighborly::Admin::PressAssetsController do
       before do
         get :new
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -95,7 +96,7 @@ describe Neighborly::Admin::PressAssetsController do
       before do
         post :create
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -103,7 +104,7 @@ describe Neighborly::Admin::PressAssetsController do
         post :create, press_asset: build(:press_asset).attributes.merge(image: Rack::Test::UploadedFile.new("#{Rails.root}/spec/fixtures/image.png"))
       end
 
-      it{ should redirect_to admin_press_assets_path }
+      it{ should redirect_to press_assets_path }
 
       it 'should create a new press_asset' do
         expect(PressAsset.all).to have(1).press_asset
@@ -119,13 +120,13 @@ describe Neighborly::Admin::PressAssetsController do
       before do
         delete :destroy, id: press_asset
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
       before { delete :destroy, id: press_asset }
 
-      it{ should redirect_to admin_press_assets_path }
+      it{ should redirect_to press_assets_path }
 
       it 'should destroy the press_asset' do
         expect{ press_asset.reload }.to raise_error(ActiveRecord::RecordNotFound)

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::DashboardController do
+  routes { Neighborly::Admin::Engine.routes }
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   before do

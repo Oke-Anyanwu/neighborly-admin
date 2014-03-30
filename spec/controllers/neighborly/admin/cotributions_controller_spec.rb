@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::ContributionsController do
+  routes { Neighborly::Admin::Engine.routes }
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:unconfirmed_contribution) { create(:contribution) }
@@ -99,7 +100,7 @@ describe Neighborly::Admin::ContributionsController do
       before do
         get :index, :locale => :pt
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do

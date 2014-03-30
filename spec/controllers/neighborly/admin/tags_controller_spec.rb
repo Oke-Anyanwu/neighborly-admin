@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::TagsController do
+  routes { Neighborly::Admin::Engine.routes }
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }
@@ -15,7 +16,7 @@ describe Neighborly::Admin::TagsController do
       before do
         get :index
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -33,7 +34,7 @@ describe Neighborly::Admin::TagsController do
       before do
         get :edit, id: tag
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -56,7 +57,7 @@ describe Neighborly::Admin::TagsController do
       before do
         put :update, id: tag
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -64,7 +65,7 @@ describe Neighborly::Admin::TagsController do
         put :update, id: tag, tag: { name: 'updated name!' }
       end
 
-      it{ should redirect_to admin_tags_path }
+      it{ should redirect_to tags_path }
 
       it 'should update tag name' do
         expect(tag.reload.name).to eq 'updated name!'
@@ -78,7 +79,7 @@ describe Neighborly::Admin::TagsController do
       before do
         get :new
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -95,7 +96,7 @@ describe Neighborly::Admin::TagsController do
       before do
         post :create
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -103,7 +104,7 @@ describe Neighborly::Admin::TagsController do
         post :create, tag: build(:tag).attributes
       end
 
-      it{ should redirect_to admin_tags_path }
+      it{ should redirect_to tags_path }
 
       it 'should create a new tag' do
         expect(Tag.all).to have(1).tag
@@ -119,13 +120,13 @@ describe Neighborly::Admin::TagsController do
       before do
         delete :destroy, id: tag
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
       before { delete :destroy, id: tag }
 
-      it{ should redirect_to admin_tags_path }
+      it{ should redirect_to tags_path }
 
       it 'should destroy the tag' do
         expect{ tag.reload }.to raise_error(ActiveRecord::RecordNotFound)

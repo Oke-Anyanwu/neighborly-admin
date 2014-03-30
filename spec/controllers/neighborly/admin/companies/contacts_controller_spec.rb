@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::Companies::ContactsController do
+  routes { Neighborly::Admin::Engine.routes }
   let(:current_user){ create(:user, admin: true) }
   let(:company_contact) { create(:company_contact) }
 

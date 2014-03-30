@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::ChannelsController do
+  routes { Neighborly::Admin::Engine.routes }
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }
@@ -39,7 +40,7 @@ describe Neighborly::Admin::ChannelsController do
       before do
         get :index
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -57,7 +58,7 @@ describe Neighborly::Admin::ChannelsController do
       before do
         get :edit, id: channel
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -80,7 +81,7 @@ describe Neighborly::Admin::ChannelsController do
       before do
         put :update, id: channel
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -88,7 +89,7 @@ describe Neighborly::Admin::ChannelsController do
         put :update, id: channel, channel: { name: 'Updated name!' }
       end
 
-      it{ should redirect_to admin_channels_path }
+      it{ should redirect_to channels_path }
 
       it 'should create a new channel' do
         expect(channel.reload.name).to eq 'Updated name!'
@@ -102,7 +103,7 @@ describe Neighborly::Admin::ChannelsController do
       before do
         get :new
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -119,7 +120,7 @@ describe Neighborly::Admin::ChannelsController do
       before do
         post :create
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -127,7 +128,7 @@ describe Neighborly::Admin::ChannelsController do
         post :create, channel: build(:channel).attributes
       end
 
-      it{ should redirect_to admin_channels_path }
+      it{ should redirect_to channels_path }
 
       it 'should create a new channel' do
         expect(Channel.all).to have(1).channel
@@ -143,13 +144,13 @@ describe Neighborly::Admin::ChannelsController do
       before do
         delete :destroy, id: channel
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
       before { delete :destroy, id: channel }
 
-      it{ should redirect_to admin_channels_path }
+      it{ should redirect_to channels_path }
 
       it 'should destroy the channel' do
         expect{ channel.reload }.to raise_error(ActiveRecord::RecordNotFound)

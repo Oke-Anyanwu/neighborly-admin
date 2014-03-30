@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::Channels::MembersController do
+  routes { Neighborly::Admin::Engine.routes }
 
   subject{ response }
   let(:admin) { create(:user, admin: true) }
@@ -17,7 +18,7 @@ describe Neighborly::Admin::Channels::MembersController do
       before do
         get :index, channel_id: channel
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -34,7 +35,7 @@ describe Neighborly::Admin::Channels::MembersController do
       before do
         get :new, channel_id: channel
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -51,7 +52,7 @@ describe Neighborly::Admin::Channels::MembersController do
       before do
         post :create, channel_id: channel
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -63,7 +64,7 @@ describe Neighborly::Admin::Channels::MembersController do
         end
 
         it { expect(flash.alert).to eq(I18n.t('admin.channels.members.messages.user_not_found')) }
-        it { should redirect_to admin_channel_members_path(channel) }
+        it { should redirect_to channel_members_path(channel) }
       end
 
       context 'when the user has not channel' do
@@ -76,7 +77,7 @@ describe Neighborly::Admin::Channels::MembersController do
         end
 
         it { expect(flash.notice).to eq(I18n.t('admin.channels.members.messages.success')) }
-        it { should redirect_to admin_channel_members_path(channel) }
+        it { should redirect_to channel_members_path(channel) }
       end
 
       context 'when the user has a channel' do
@@ -87,7 +88,7 @@ describe Neighborly::Admin::Channels::MembersController do
         end
 
         it { expect(flash.alert).to eq(I18n.t('admin.channels.members.messages.already_a_member')) }
-        it { should redirect_to admin_channel_members_path(channel) }
+        it { should redirect_to channel_members_path(channel) }
       end
     end
   end
@@ -101,13 +102,13 @@ describe Neighborly::Admin::Channels::MembersController do
       before do
         delete :destroy, id: user, channel_id: channel
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
       before { delete :destroy, id: user, channel_id: channel }
 
-      it{ should redirect_to admin_channel_members_path(channel) }
+      it{ should redirect_to channel_members_path(channel) }
 
       it 'should remove the user from channel members' do
         expect(channel.reload.members).to eq []

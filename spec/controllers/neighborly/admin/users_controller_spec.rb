@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::UsersController do
+  routes { Neighborly::Admin::Engine.routes }
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }
@@ -14,7 +15,7 @@ describe Neighborly::Admin::UsersController do
       before do
         get :index, :locale => :pt
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do

@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::ProjectsController do
+  routes { Neighborly::Admin::Engine.routes }
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:current_user){ admin }
 
   before do
     controller.stub(:current_user).and_return(current_user)
-    request.env['HTTP_REFERER'] = admin_projects_path
+    request.env['HTTP_REFERER'] = projects_path
   end
 
   describe 'PUT approve' do
@@ -57,7 +58,7 @@ describe Neighborly::Admin::ProjectsController do
       before do
         get :index, locale: :pt
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -93,7 +94,7 @@ describe Neighborly::Admin::ProjectsController do
       before do
         delete :destroy, id: project, locale: :pt
       end
-      it{ should redirect_to new_user_session_path  }
+      it{ should redirect_to '/login'  }
     end
 
     context "when I'm logged as admin" do
@@ -101,7 +102,7 @@ describe Neighborly::Admin::ProjectsController do
         delete :destroy, id: project, locale: :pt
       end
 
-      its(:status){ should redirect_to admin_projects_path }
+      its(:status){ should redirect_to projects_path }
 
       it 'should change state to deleted' do
         expect(project.reload.deleted?).to be_true
@@ -117,7 +118,7 @@ describe Neighborly::Admin::ProjectsController do
       before do
         post :populate, id: project
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to '/login' }
     end
 
     context "when I'm logged as admin" do
@@ -147,7 +148,7 @@ describe Neighborly::Admin::ProjectsController do
           expect(subject.anonymous).to be_true
         end
 
-        it{ should redirect_to populate_contribution_admin_project_path(project) }
+        it{ should redirect_to populate_contribution_project_path(project) }
       end
 
       context 'existing user' do

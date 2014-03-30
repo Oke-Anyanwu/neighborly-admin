@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Neighborly::Admin::FinancialsController do
+  routes { Neighborly::Admin::Engine.routes }
   let(:admin) { create(:user, admin: true) }
 
   before do
