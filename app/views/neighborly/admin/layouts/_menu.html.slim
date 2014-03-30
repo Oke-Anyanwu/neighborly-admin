@@ -1,14 +1,10 @@
 nav.tabs
-  = tab_link_to t('admin.dashboard.index.menu'), root_path
-  = tab_link_to t('admin.projects.index.menu'), projects_path
-
-  - if channel.present?
-    = tab_link_to t('channels.admin.followers.menu'), channels_followers_path
-  - else
-    = tab_link_to t('admin.contributions.index.menu'), contributions_path
-    = tab_link_to t('admin.users.index.menu'), users_path
-    = tab_link_to t('admin.channels.index.menu'), channels_path
-    = tab_link_to t('admin.tags.index.menu'), tags_path
-    = tab_link_to t('admin.press_assets.index.menu'), press_assets_path
-    = tab_link_to t('admin.financials.index.menu'), financials_path
-    = tab_link_to t('admin.companies.contacts.index.menu'), companies_contacts_path
+  = tab_link_to t('neighborly.admin.dashboard.index.menu'), root_path
+  = tab_link_to t('neighborly.admin.projects.index.menu'), projects_path
+  = tab_link_to t('neighborly.admin.contributions.index.menu'), contributions_path
+  = tab_link_to t('neighborly.admin.users.index.menu'), users_path
+  = tab_link_to t('neighborly.admin.channels.index.menu'), channels_path
+  = tab_link_to t('neighborly.admin.tags.index.menu'), tags_path
+  = tab_link_to t('neighborly.admin.press_assets.index.menu'), press_assets_path
+  = tab_link_to t('neighborly.admin.financials.index.menu'), financials_path
+  = tab_link_to t('neighborly.admin.companies.contacts.index.menu'), companies_contacts_path
