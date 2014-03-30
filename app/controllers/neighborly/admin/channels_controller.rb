@@ -3,6 +3,18 @@ module Neighborly::Admin
     defaults finder: :find_by_permalink
     actions :all, except: [:show]
 
+    def create
+      create! { channels_path }
+    end
+
+    def update
+      update! { channels_path }
+    end
+
+    def destroy
+      destroy! { channels_path }
+    end
+
     def self.channel_actions
       %w[push_to_draft push_to_online].each do |action|
         define_method action do
