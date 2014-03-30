@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in neighborly-admin.gemspec
+eval_gemfile File.join(File.dirname(__FILE__), 'spec/dummy/Gemfile')
+
 gemspec
