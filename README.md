@@ -1,29 +1,60 @@
 # Neighborly::Admin
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/neighborly/neighborly-admin.png?branch=master)](https://travis-ci.org/neighborly/neighborly-admin) [![Code Climate](https://codeclimate.com/github/neighborly/neighborly-admin.png)](https://codeclimate.com/github/neighborly/neighborly-admin)
 
-## Installation
+## What
 
-Add this line to your application's Gemfile:
+This is the admin of [Neighborly](https://github.com/luminopolis/neighborly), a Civic Crowdfunding platform.
 
-    gem 'neighborly-admin'
+## How
 
-And then execute:
+Include this gem as dependency of your project, adding the following line in your `Gemfile`.
 
-    $ bundle
+```ruby
+# Gemfile
+gem 'neighborly-admin'
+```
 
-Or install it yourself as:
+Neighborly::Admin is a Rails Engine, integrating with your (Neighborly) Rails application with very little of effort. To turn the engine on, mount it in an appropriate route:
 
-    $ gem install neighborly-admin
-
-## Usage
-
-TODO: Write usage instructions here
+```ruby
+# config/routes.rb
+mount Neighborly::Admin::Engine => '/admin/', as: :neighborly_admin
+```
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/neighborly-admin/fork )
+1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+### Running specs
+
+We prize for our test suite and coverage, so it would be great if you could run the specs to ensure that your patch is not breaking the existing codebase.
+
+When running specs for the first time, you'll need to download Neighborly's source code to be tested against your version of the gem. The following command will install the dummy app in `spec/dummy`.
+
+```
+$ git submodule init
+$ git submodule update
+```
+
+And before you go, you need to initialize a database for this "dummy" app.
+
+```
+$ cd spec/dummy
+$ RAILS_ENV=test rake db:create db:migrate
+$ cd ../../
+```
+
+To run the specs just run:
+
+```
+$ bundle exec rake spec
+```
+
+## License
+
+Licensed under the [MIT license](LICENSE.txt).
