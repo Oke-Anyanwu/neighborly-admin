@@ -7,9 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = 'neighborly-admin'
   spec.version       = Neighborly::Admin::VERSION
   spec.authors       = ['Josemar Luedke']
-  spec.email         = ['josemarluedke@gmail.com']
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.email         = %w(josemarluedke@gmail.com)
+  spec.summary       = 'Neighbor.ly Admin.'
+  spec.description   = 'This is the admin of Neighbor.ly'
   spec.homepage      = 'https://github.com/neighborly/neighborly-admin'
   spec.license       = 'MIT'
 
