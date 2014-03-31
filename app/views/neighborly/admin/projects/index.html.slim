@@ -124,7 +124,7 @@
                           = t('.populate_contribution')
                       - if project.can_push_to_trash?
                         li
-                          = link_to project_path(project), method: :delete, data: {confirm: t('admin.confirm_dialog')} do
+                          = link_to project_path(project), method: :delete, data: {confirm: t('neighborly.admin.confirm_dialog')} do
                             = t('.send_to_trash')
                       - if project.can_approve?
                         li
