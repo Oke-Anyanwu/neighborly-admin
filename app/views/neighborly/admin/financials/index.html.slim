@@ -60,7 +60,7 @@
             tbody
               - @projects.each do |project|
                 tr id=project.id
-                  td= link_to project.name, project_path(project), target: 'blank'
+                  td= link_to project.name, main_app.project_path(project), target: 'blank'
                   td= link_to project.user.display_name, user_path(project.user, anchor: :settings), target: '_blank'
                   td= project.display_goal
                   td= project.display_pledged
