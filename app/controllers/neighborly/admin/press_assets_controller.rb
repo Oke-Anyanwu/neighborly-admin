@@ -14,8 +14,13 @@ module Neighborly::Admin
       destroy! { press_assets_path }
     end
 
+    protected
     def collection
       @press_assets ||= apply_scopes(end_of_association_chain).page(params[:page])
+    end
+
+    def permitted_params
+      params.permit({ press_asset: PressAsset.attribute_names.map(&:to_sym) })
     end
   end
 end
