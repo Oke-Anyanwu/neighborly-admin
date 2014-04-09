@@ -88,7 +88,7 @@
               - @projects.each do |project|
                 tr id=project.id
                   td
-                    = link_to project.name, project_path(project)
+                    = link_to project.name, main_app.project_path(project)
                     - if project.channels.present?
                       | &nbsp;
                       - project.channels.each do |channel|

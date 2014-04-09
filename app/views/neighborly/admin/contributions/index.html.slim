@@ -97,7 +97,7 @@
                   = link_to "#contribution-info-#{contribution.id}", class: 'button tiny secondary', data: { 'reveal-id' => "contribution-info-#{contribution.id}" } do
                     i.icon-et-info-circled
                 td title=contribution.project.name
-                  = link_to project_path(contribution.project) do
+                  = link_to main_app.project_path(contribution.project) do
                     = image_tag contribution.project.display_image, size: '100x100'
                 td title=contribution.user.display_name
                   = link_to user_path(contribution.user) do
