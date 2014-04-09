@@ -4,6 +4,7 @@ module Neighborly::Admin
   end
 
   class BaseController < ::ApplicationController
+    skip_before_filter :set_persistent_warning
     inherit_resources
 
     before_filter do
