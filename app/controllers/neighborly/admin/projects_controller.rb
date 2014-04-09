@@ -49,20 +49,28 @@ module Neighborly::Admin
 
     def create_user
       password = Devise.friendly_token
-      user = User.new(params[:user])
+      user = User.new(user_params[:user])
       user.email = "#{Devise.friendly_token}@populate.user"
       user.password = password
       user.password_confirmation = password
-      user.profile_type = params[:user][:profile_type]
+      user.profile_type = user_params[:user][:profile_type]
       user
     end
 
     def build_contribution(user)
-      contribution = resource.contributions.new(params[:contribution])
+      contribution = resource.contributions.new(contribution_params[:contribution])
       contribution.payment_method = 'PrePopulate'
       contribution.state = 'confirmed'
       contribution.user = user
       contribution
+    end
+
+    def user_params
+      params.permit({ user: User.attribute_names.map(&:to_sym) })
+    end
+
+    def contribution_params
+      params.permit({ contribution: Contribution.attribute_names.map(&:to_sym) })
     end
   end
 end
