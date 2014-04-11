@@ -50,6 +50,8 @@ And before you go, you need to initialize a database for this "dummy" app.
 
 ```
 $ cd spec/dummy
+$ cp config/database.sample.yml config/database.yml
+$ bundle install
 $ RAILS_ENV=test rake db:create db:migrate
 $ cd ../../
 ```
