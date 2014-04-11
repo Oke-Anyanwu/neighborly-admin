@@ -126,10 +126,10 @@
                         li
                           = link_to project_path(project), method: :delete, data: {confirm: t('neighborly.admin.confirm_dialog')} do
                             = t('.send_to_trash')
-                      - if project.can_approve?
+                      - if project.can_launch?
                         li
-                          = link_to approve_project_path(project), method: :put do
-                            = t('.approve')
+                          = link_to launch_project_path(project), method: :put do
+                            = t('.launch')
 
                       - if project.can_reject?
                         li

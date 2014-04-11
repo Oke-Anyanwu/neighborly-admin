@@ -11,12 +11,12 @@ describe Neighborly::Admin::ProjectsController do
     request.env['HTTP_REFERER'] = projects_path
   end
 
-  describe 'PUT approve' do
-    let(:project) { create(:project, state: 'in_analysis') }
+  describe 'PUT launch' do
+    let(:project) { create(:project, state: 'draft') }
     subject { project.online? }
 
     before do
-      put :approve, id: project, locale: :pt
+      put :launch, id: project, locale: :pt
     end
 
     it do
@@ -26,7 +26,7 @@ describe Neighborly::Admin::ProjectsController do
   end
 
   describe 'PUT reject' do
-    let(:project) { create(:project, state: 'in_analysis') }
+    let(:project) { create(:project, state: 'draft') }
     subject { project.rejected? }
 
     before do

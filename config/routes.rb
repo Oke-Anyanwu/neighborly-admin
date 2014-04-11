@@ -16,7 +16,7 @@ Neighborly::Admin::Engine.routes.draw do
 
   resources :projects, only: [ :index, :update, :destroy ] do
     member do
-      put 'approve'
+      put 'launch'
       put 'reject'
       put 'push_to_draft'
       put 'push_to_soon'
