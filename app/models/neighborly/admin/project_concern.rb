@@ -8,7 +8,7 @@ module Neighborly::Admin::ProjectConcern
 
     scope :by_progress, ->(progress) do
       joins(:project_total).
-        where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f)
+        where("project_totals.pledged >= projects.goal*?", progress.to_i/100.0)
     end
 
     scope :by_user_email, ->(email) do
