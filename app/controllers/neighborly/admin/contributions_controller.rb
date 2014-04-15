@@ -27,7 +27,7 @@ module Neighborly::Admin
     end
 
     def permitted_params
-      params.permit({ tag: Contribution.attribute_names.map(&:to_sym) })
+      params.permit({ contribution: Contribution.attribute_names.map(&:to_sym) })
     end
   end
 end
