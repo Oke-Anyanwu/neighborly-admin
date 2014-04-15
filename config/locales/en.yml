@@ -155,7 +155,7 @@ en:
           populate_contribution: 'Prepopulate contribution'
           send_to_trash: "Send to TRASH"
           send_to_draft: 'Send to DRAFT!'
-          send_to_soon: 'Send to SOON!'
+          approve: 'Approve!'
           reject: 'Reject!'
           launch: 'Launch!'
           user_id: 'User ID'
