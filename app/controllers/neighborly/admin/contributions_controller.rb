@@ -25,5 +25,9 @@ module Neighborly::Admin
     def collection
       @contributions = apply_scopes(end_of_association_chain).without_state('deleted').order("contributions.created_at DESC").page(params[:page])
     end
+
+    def permitted_params
+      params.permit({ tag: Contribution.attribute_names.map(&:to_sym) })
+    end
   end
 end
