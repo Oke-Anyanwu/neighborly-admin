@@ -1,3 +1,4 @@
 = simple_form_for resource, url: (resource.persisted? ? tag_path(resource) : tags_path) do |f|
   = f.input :name
+  = f.input :visible
   = f.button :submit, disable_with: I18n.t('words.sending')
