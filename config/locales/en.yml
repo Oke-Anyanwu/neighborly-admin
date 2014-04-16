@@ -71,6 +71,8 @@ en:
           edit: 'Edit'
           destroy: 'Destroy'
           new: 'Add new tag'
+          only_polular: 'Show only popular tags'
+          submit: 'Search'
         new:
           title:
             'Add new tag'

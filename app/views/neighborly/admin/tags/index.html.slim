@@ -3,6 +3,15 @@
   .row
     = render 'neighborly/admin/layouts/menu'
     section.content.large-12.columns
+      .filters
+        = form_tag tags_path, method: :get, class: 'form-horizontal' do |f|
+          .row
+            .large-6.columns
+              = label_tag :popular, t('.only_polular')
+              = check_box_tag :popular, :true, params[:popular].present?
+            .large-6.columns.text-right
+              = submit_tag t('.submit'), class: 'button'
+
       .text-right
         = link_to t('.new'), new_tag_path, class: 'button'
       .data-table

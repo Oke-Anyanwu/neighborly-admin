@@ -1,6 +1,7 @@
 module Neighborly::Admin
   class TagsController < BaseController
     actions :all, except: [:show]
+    has_scope :popular, type: :boolean
 
     def create
       create! { tags_path }
