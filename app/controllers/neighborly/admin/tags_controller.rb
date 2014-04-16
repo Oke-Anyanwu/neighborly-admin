@@ -7,7 +7,15 @@ module Neighborly::Admin
     end
 
     def update
-      update! { tags_path }
+      update! do |format|
+        if resource.errors.empty?
+          format.html { redirect_to tags_path }
+          format.json { respond_with_bip(resource) }
+        else
+          format.html { render action: 'edit' }
+          format.json { respond_with_bip(resource) }
+        end
+      end
     end
 
     def destroy
