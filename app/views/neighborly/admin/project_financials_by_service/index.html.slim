@@ -1,0 +1,42 @@
+- @title = t('.title')
+.admin
+  .row
+    = render 'neighborly/admin/layouts/menu'
+    section.content.large-12.columns
+      .data-table
+        - if collection.empty?
+          = t('.no_contributions')
+        - else
+          table
+            thead
+              tr
+                th style="width: 200px;"
+                  = t('.project')
+                th= t('.payment_service')
+                th= t('.net_amount')
+                th= t('.platform_fee')
+                th= t('.payment_service_fee')
+                th= t('.status')
+                th= t('.run_payout')
+            tbody
+              - collection.each do |financial|
+                tr id=financial.project_id
+                  - is_first_from_project = collection.select { |f| f.project_id.eql? financial.project_id }.first.eql? financial
+                  td
+                    - if is_first_from_project
+                      = link_to financial.project.name, main_app.project_path(financial.project), target: 'blank'
+                  td = financial.payment_method
+                  td = number_to_currency financial.net_amount,          precision: 2
+                  td = number_to_currency financial.platform_fee,        precision: 2
+                  td = number_to_currency financial.payment_service_fee, precision: 2
+                  td
+                    - payment_service  = (i=financial.payment_method.index('-')) && financial.payment_method[0..(i - 1)] || financial.payment_method
+                    - was_already_paid = Payout.exists?(project_id: financial.project_id, payment_service: payment_service)
+                    - if was_already_paid
+                      span.label.label-success done
+                    - else
+                      - if is_first_from_project
+                        = link_to 'Run payout', '#', title: 'Run the payout routine for this project.', data: { confirm: "Payout Project \"#{financial.project.name}\"?" }
+                      - unless was_already_paid
+                        = link_to 'Manual', '#', title: 'Record manual payout for this project in this net amount.', data: { confirm: "Payout Project \"#{financial.project.name}\"?" }
+        = paginate collection

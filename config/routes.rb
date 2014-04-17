@@ -1,9 +1,10 @@
 Neighborly::Admin::Engine.routes.draw do
   root to: 'dashboard#index'
-  resources :tags, except: [:show]
-  resources :press_assets, except: [:show]
-  resources :financials, only: [ :index ]
-  resources :users, only: [ :index ]
+  resources :tags,                          except: :show
+  resources :press_assets,                  except: :show
+  resources :financials,                    only:   :index
+  resources :users,                         only:   :index
+  resources :project_financials_by_service, only:   :index
 
   resources :channels, except: [:show] do
     member do
