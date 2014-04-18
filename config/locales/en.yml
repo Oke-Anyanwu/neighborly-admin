@@ -274,3 +274,6 @@ en:
           current_period: "Last 8 weeks"
           previous_period: "Previous 8 weeks"
           last_year: "Last year"
+      payouts:
+        messages:
+          payout_scheduled: 'Payout for %{project_name} scheduled.'

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Neighborly::Admin::DashboardController do
+describe Neighborly::Admin::PayoutsController do
   routes { Neighborly::Admin::Engine.routes }
   let(:admin)   { create(:user, admin: true) }
-  let(:project) { create(:project, admin: true) }
+  let(:project) { create(:project) }
   before do
     controller.stub(:current_user).and_return(admin)
   end
@@ -35,6 +35,18 @@ describe Neighborly::Admin::DashboardController do
 
     it 'redirects to list of financials by service page' do
       do_request
+      expect(response).to redirect_to(project_financials_by_service_index_path)
+    end
+  end
+
+  describe 'POST \'process_new\'' do
+    it 'process a payout' do
+      expect(PayoutWorker).to receive(:perform_async).with(project.id, admin.id)
+      post :process_new, project_id: project.id
+    end
+
+    it 'redirects to list of financials by service page' do
+      post :process_new, project_id: project.id
       expect(response).to redirect_to(project_financials_by_service_index_path)
     end
   end
