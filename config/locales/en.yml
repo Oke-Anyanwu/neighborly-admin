@@ -139,6 +139,9 @@ en:
           title: 'Add new press asset'
         edit:
           title: 'Edit press asset'
+      project_financials_by_service:
+        index:
+          title: 'Project financials by service'
       projects:
         index:
           by_state: 'By state'
