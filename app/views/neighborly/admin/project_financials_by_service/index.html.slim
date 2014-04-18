@@ -22,7 +22,7 @@
                 - is_first_from_project = collection.select { |f| f.project_id.eql? financial.project_id }.first.eql? financial
                 - if is_first_from_project
                   tr id=financial.project_id
-                    td = link_to financial.project.name, main_app.project_path(financial.project), target: 'blank'
+                    td = link_to financial.project.name, projects_path(by_id: financial.project_id), target: 'blank'
                     - if financial.project.paid?
                       td.table-label colspan=5
                     - else
@@ -39,7 +39,7 @@
                     - payment_service = (i=financial.payment_method.index('-')) && financial.payment_method[0..(i - 1)] || financial.payment_method
                     - payout          = Payout.find_by(project_id: financial.project_id, payment_service: payment_service)
                     - if payout
-                      span.label.label-success title="Done by #{payout.user.email}" Done
+                      span.label.label-success title="Payout done by #{payout.user.email} to #{payout.project.user.email}" Done
                     - else
                       - payout_net_amount = ProjectFinancialsByService.where('payment_method LIKE ?', payment_service + '%').sum(:net_amount)
                       = link_to 'Manual', payouts_path(net_amount:      payout_net_amount,
