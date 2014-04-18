@@ -5,6 +5,9 @@ Neighborly::Admin::Engine.routes.draw do
   resources :financials,                    only:   :index
   resources :users,                         only:   :index
   resources :project_financials_by_service, only:   :index
+  resources :payouts,                       only:   :create do
+    post :process_new, on: :collection
+  end
 
   resources :channels, except: [:show] do
     member do

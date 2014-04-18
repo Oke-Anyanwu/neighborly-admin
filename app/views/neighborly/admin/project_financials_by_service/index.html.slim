@@ -23,10 +23,12 @@
                 - if is_first_from_project
                   tr id=financial.project_id
                     td = link_to financial.project.name, main_app.project_path(financial.project), target: 'blank'
-                    td.table-label colspan=4 Payout is pending and can process "balanced-creditcard" and "balanced-bankaccount" automatically
-                    td
-                      - unless financial.project.paid?
-                        = link_to 'Run payout', payouts_process_path(project_id: financial.project.id), method: :post, title: 'Run the payout routine for this project.', data: { confirm: "Payout Project \"#{financial.project.name}\"?" }
+                    - if financial.project.paid?
+                      td.table-label colspan=5
+                    - else
+                      td.table-label colspan=4 Payout is pending and can process "balanced-creditcard" and "balanced-bankaccount" automatically
+                      td
+                        = link_to 'Run payout', process_new_payouts_path(project_id: financial.project_id, payment_method: financial.payment_method), method: :post, title: 'Run the payout routine for this project.', data: { confirm: "Payout Project \"#{financial.project.name}\"?" }
                 tr id=financial.project_id
                   td
                   td = financial.payment_method
@@ -39,5 +41,8 @@
                     - if payout
                       span.label.label-success title="Done by #{payout.user.email}" Done
                     - else
-                      = link_to 'Manual', '#', title: 'Record manual payout for this project in this net amount.', data: { confirm: "Payout Project \"#{financial.project.name}\"?" }
+                      - payout_net_amount = ProjectFinancialsByService.where('payment_method LIKE ?', payment_service + '%').sum(:net_amount)
+                      = link_to 'Manual', payouts_path(net_amount:      payout_net_amount,
+                                                       payment_service: payment_service,
+                                                       project_id:      financial.project_id), method: :post, title: 'Record manual payout for this project in this net amount.', data: { confirm: "Record manual payout of $#{payout_net_amount} through #{payment_service}?" }
         = paginate collection
