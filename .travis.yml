@@ -4,14 +4,12 @@ rvm:
 before_install: gem update --remote bundler
 
 before_script:
-  - "git submodule init"
-  - "git submodule update"
-  - "cd spec/dummy/"
-  - "cp config/database.sample.yml config/database.yml"
-  - "psql -c 'create role neighborly SUPERUSER LOGIN;' postgres"
-  - "psql -c 'create database neighborly_test;' -U neighborly postgres"
-  - "bundle exec rake db:migrate"
-  - "cd ../../"
+  - 'git submodule init'
+  - 'git submodule update'
+  - 'cd spec/dummy/'
+  - './bin/bootstrap'
+  - 'bundle exec rake db:migrate'
+  - 'cd ../../'
 
 script:
-  - "bundle exec rake spec"
+  - 'bundle exec rake spec'
