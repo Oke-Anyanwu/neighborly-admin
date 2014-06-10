@@ -3,7 +3,7 @@ module Neighborly
     class Engine < ::Rails::Engine
       isolate_namespace Neighborly::Admin
 
-      initializer 'include concerns' do |app|
+      config.to_prepare do
         ::Project.send(:include, Neighborly::Admin::ProjectConcern)
       end
     end
