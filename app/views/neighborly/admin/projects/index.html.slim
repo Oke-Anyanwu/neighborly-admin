@@ -48,11 +48,11 @@
           .large-6.columns.text-left
               = paginate @projects
           .large-6.columns.text-right
-            = pluralize_without_number @projects.count, t('words.found_singular'), t('words.found_plural')
+            = pluralize_without_number @projects.size, t('words.found_singular'), t('words.found_plural')
             | &nbsp;
-            strong = @projects.count
+            strong = @projects.size
             | &nbsp;
-            = pluralize_without_number(@projects.count, t('words.project_singular'), t('words.project_plural')).downcase
+            = pluralize_without_number(@projects.size, t('words.project_singular'), t('words.project_plural')).downcase
       .data-table
         - if @projects.empty?
           = t('.no_projects')
