@@ -12,20 +12,17 @@ module Neighborly::Admin
 
     def index
       respond_to do |format|
-        format.html {collection}
+        format.html { collection }
         format.csv do
-          financials = ProjectFinancial.where(project_id: projects.select("projects.id"))
-
-          self.response_body = Enumerator.new do |y|
-            financials.copy_to do |line|
-              y << line
-            end
-          end
+          respond_with(projects.map do |project|
+            ProjectFinancial.new(project)
+          end)
         end
       end
     end
 
     protected
+
     def projects
       apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (projects.expires_at)::date DESc")
     end
