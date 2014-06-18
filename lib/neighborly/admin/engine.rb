@@ -6,6 +6,7 @@ module Neighborly
       config.to_prepare do
         ::Project.send(:include, Neighborly::Admin::ProjectConcern)
         ::User.send(:include, Neighborly::Admin::UserConcern)
+        ::Contribution.send(:include, Neighborly::Admin::ContributionConcern)
       end
     end
   end
