@@ -2,13 +2,10 @@ module Neighborly::Admin::ProjectConcern
   extend ActiveSupport::Concern
 
   included do
-    scope :with_project_totals, -> do
-      joins('LEFT OUTER JOIN project_totals pt ON pt.project_id = projects.id')
-    end
-
     scope :by_progress, ->(progress) do
-      joins(:project_total).
-        where("project_totals.pledged >= projects.goal*?", progress.to_i/100.0)
+      where(id: select { |project|
+        ProjectTotal.new(project).pledged >= project.goal * (progress / 100.0)
+      })
     end
 
     scope :by_user_email, ->(email) do
