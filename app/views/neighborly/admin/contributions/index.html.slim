@@ -100,7 +100,7 @@
                   = link_to main_app.project_path(contribution.project) do
                     = image_tag contribution.project.display_image, size: '100x100'
                 td title=contribution.user.display_name
-                  = link_to user_path(contribution.user) do
+                  = link_to main_app.user_path(contribution.user) do
                     = contribution.user.display_image_html width: 50, height: 50
                   .user_id= best_in_place contribution, :user_id, method: :put, type: :input
                 td= best_in_place contribution, :value, method: :put, type: :input

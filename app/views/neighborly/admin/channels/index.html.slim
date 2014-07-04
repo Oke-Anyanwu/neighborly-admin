@@ -32,7 +32,7 @@
                     - if channel.members.any?
                       ul
                         - for user in channel.members
-                          li = link_to user.display_name, user_path(user)
+                          li = link_to user.display_name, main_app.user_path(user)
                     = link_to t('.manage_members'), channel_members_path(channel), class: 'button secondary tiny'
                   td = channel.permalink
                   td = channel.created_at.to_date
