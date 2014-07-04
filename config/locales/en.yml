@@ -183,7 +183,7 @@ en:
       financials:
         index:
           menu: 'Financial reports'
-          title: 'Finalcial reports'
+          title: 'Financial reports'
           submit: 'Filter'
           with_state: 'By state'
           by_progress: By progress %
