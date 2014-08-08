@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Neighborly::Admin::Companies::ContactsController do
+describe Neighborly::Admin::ContactsController do
   routes { Neighborly::Admin::Engine.routes }
   let(:current_user){ create(:user, admin: true) }
-  let(:company_contact) { create(:company_contact) }
+  let(:contact) { create(:contact) }
 
   before do
     controller.stub(:current_user).and_return(current_user)
@@ -12,13 +12,12 @@ describe Neighborly::Admin::Companies::ContactsController do
   describe "GET 'index'" do
     before { get :index }
     it { expect(response).to be_success }
-    it { expect(assigns(:contacts)).to eq [company_contact] }
+    it { expect(assigns(:contacts)).to eq [contact] }
   end
 
   describe "GET 'show'" do
-    before { get :show, id: company_contact }
+    before { get :show, id: contact }
     it { expect(response).to be_success }
-    it { expect(assigns(:contact)).to eq company_contact }
+    it { expect(assigns(:contact)).to eq contact }
   end
-
 end

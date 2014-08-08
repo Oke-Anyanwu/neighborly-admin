@@ -1,6 +1,5 @@
 module Neighborly::Admin
-  class Companies::ContactsController < BaseController
-    defaults class_name: 'CompanyContact'
+  class ContactsController < BaseController
     actions :index, :show
 
     def collection
