@@ -43,7 +43,5 @@ Neighborly::Admin::Engine.routes.draw do
     resources :statistics, only: [ :index ]
   end
 
-  namespace :companies do
-    resources :contacts, only: [:index, :show]
-  end
+  resources :contacts, only: [:index, :show]
 end

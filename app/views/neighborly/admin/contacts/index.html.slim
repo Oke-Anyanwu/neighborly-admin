@@ -27,6 +27,6 @@
                   td = l contact.created_at, format: :long
                   td
                     .text-right
-                      = link_to t('.details'), companies_contact_path(contact), class: 'button tiny'
+                      = link_to t('.details'), contact_path(contact), class: 'button tiny'
 
         = paginate collection
