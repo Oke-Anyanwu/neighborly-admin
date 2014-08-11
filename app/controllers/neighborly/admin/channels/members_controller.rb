@@ -11,14 +11,14 @@ module Neighborly::Admin
 
         if user.present?
           if parent.members.include?(user)
-            flash.alert = t('admin.channels.members.messages.already_a_member')
+            flash.alert = t('neighborly.admin.channels.members.messages.already_a_member')
           else
             parent.members << user
             parent.save
-            flash.notice = t('admin.channels.members.messages.success')
+            flash.notice = t('neighborly.admin.channels.members.messages.success')
           end
         else
-          flash.alert = t('admin.channels.members.messages.user_not_found')
+          flash.alert = t('neighborly.admin.channels.members.messages.user_not_found')
         end
       end
 
@@ -27,7 +27,7 @@ module Neighborly::Admin
 
     def destroy
       parent.channel_members.where(user_id: resource.id).first.delete rescue false
-      redirect_to channel_members_path(parent), flash: { success: t('admin.channels.members.messages.removed') }
+      redirect_to channel_members_path(parent), flash: { success: t('neighborly.admin.channels.members.messages.removed') }
     end
 
     protected
