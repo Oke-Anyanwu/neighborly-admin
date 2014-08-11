@@ -8,7 +8,7 @@ module Neighborly::Admin
       %w[confirm pendent refund hide cancel push_to_trash].each do |action|
         define_method action do
           resource.send(action)
-          flash.notice = I18n.t("admin.contributions.messages.successful.#{action}")
+          flash.notice = I18n.t("neighborly.admin.contributions.messages.successful.#{action}")
           redirect_to contributions_path(params[:local_params])
         end
       end
@@ -17,7 +17,7 @@ module Neighborly::Admin
 
     def change_reward
       resource.change_reward! params[:reward_id]
-      flash.notice = I18n.t('admin.contributions.messages.successful.change_reward')
+      flash.notice = I18n.t('neighborly.admin.contributions.messages.successful.change_reward')
       redirect_to contributions_path(params[:local_params])
     end
 

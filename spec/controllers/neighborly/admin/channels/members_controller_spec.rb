@@ -63,7 +63,7 @@ describe Neighborly::Admin::Channels::MembersController do
           post :create, channel_id: channel, user_id: 'not_exist'
         end
 
-        it { expect(flash.alert).to eq(I18n.t('admin.channels.members.messages.user_not_found')) }
+        it { expect(flash.alert).to eq(I18n.t('neighborly.admin.channels.members.messages.user_not_found')) }
         it { should redirect_to channel_members_path(channel) }
       end
 
@@ -76,7 +76,7 @@ describe Neighborly::Admin::Channels::MembersController do
           expect(channel.members).to eq [user]
         end
 
-        it { expect(flash.notice).to eq(I18n.t('admin.channels.members.messages.success')) }
+        it { expect(flash.notice).to eq(I18n.t('neighborly.admin.channels.members.messages.success')) }
         it { should redirect_to channel_members_path(channel) }
       end
 
@@ -87,7 +87,7 @@ describe Neighborly::Admin::Channels::MembersController do
           post :create, channel_id: channel, user_id: user.id
         end
 
-        it { expect(flash.alert).to eq(I18n.t('admin.channels.members.messages.already_a_member')) }
+        it { expect(flash.alert).to eq(I18n.t('neighborly.admin.channels.members.messages.already_a_member')) }
         it { should redirect_to channel_members_path(channel) }
       end
     end
