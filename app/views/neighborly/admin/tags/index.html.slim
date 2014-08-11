@@ -34,7 +34,7 @@
                 tr id=tag.id
                   td = tag.display_name
                   td = tag.taggings.count
-                  td = best_in_place tag, :visible, method: :put, type: :checkbox, collection: [t('words._no'), t('words._yes')]
+                  td = best_in_place tag, :visible, type: :checkbox, collection: [t('words._no'), t('words._yes')]
                   td
                     .text-right
                       = link_to t('.edit'), edit_tag_path(tag), class: 'button tiny'
