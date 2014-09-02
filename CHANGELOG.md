@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.0
+
+* Import some code from the main app
+* Upgrade to ruby 2.1.2
+* Bug fixes
+
 ## 1.0.0
 
 * Transformed the admin from single Rails application to a Rails Engine.
