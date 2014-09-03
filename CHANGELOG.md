@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.1
+
+* Fix by_progress filter on project
+
 ## 1.1.0
 
 * Import some code from the main app
