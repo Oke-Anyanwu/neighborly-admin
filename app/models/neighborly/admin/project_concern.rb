@@ -3,9 +3,10 @@ module Neighborly::Admin::ProjectConcern
 
   included do
     scope :by_progress, ->(progress) do
-      where(id: select { |project|
-        ProjectTotal.new(project).pledged >= project.goal * (progress / 100.0)
-      })
+      projects = select { |project|
+        project.project_total.pledged >= project.goal * (progress / 100.0)
+      }
+      where(id: projects)
     end
 
     scope :by_user_email, ->(email) do
